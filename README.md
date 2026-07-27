@@ -68,9 +68,13 @@ Bu devreye üçüncü bir qubit eklesek, dolanıklık nasıl değişir?
 
 ## Kurulum
 
-IDE-içi AI sohbeti kullanıyorsan (Cursor, Windsurf, Copilot Chat, Claude Code) kurulum tek
-seferlik — sonrasında tamamen normal sohbetten devam edersin. Bu araçlar proje kökündeki kural
-dosyasını **her mesajda otomatik** okur.
+İki durumda da mantık aynı: dosyayı **bir yere kopyala**, sonra **yeni bir sohbet/oturum aç**.
+Fark sadece kopyalanacak yer — IDE'de proje kökü, web uygulamasında platformun kalıcı talimat
+alanı. Kurulum tek seferlik, sonrasında tamamen normal sohbetten devam edersin.
+
+###  AI sohbeti (Cursor, Windsurf, Copilot Chat, Claude Code)
+
+Bu araçlar proje kökündeki kural dosyasını **sohbet başında** okur.
 
 1. [`vibecoding.md`](vibecoding.md) dosyasını projenin kök dizinine kopyala.
 2. Kullandığın aracın beklediği dosya adına göre yeniden adlandır:
@@ -84,8 +88,9 @@ dosyasını **her mesajda otomatik** okur.
 
 3. Dosyanın en üstündeki `DOMAIN`, `DOMAIN_UZMANLIK_ROLÜ`, `GELİŞTİRİCİ_SEVİYESİ` alanlarını
    doldur (boş bırakırsan AI ilk mesajda sana sorar, sen de sohbetten cevap verirsin).
-4. Yeni bir oturum/sohbet başlat (dosyayı sohbet zaten açıkken eklediysen, dosya o oturuma
-   yansımaz — kapatıp yeniden aç) ve normal şekilde kod yazdırmaya başla.
+4. **Yeni bir oturum/sohbet başlat.** Dosyayı sohbet zaten açıkken eklediysen o oturuma
+   yansımaz — mevcut sohbeti kapatıp yeniden aç, sonra normal şekilde kod yazdırmaya başla.
+
 
 ## Kurulumdan sonra
 
