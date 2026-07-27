@@ -1,122 +1,128 @@
 # VibeCoding + Learn
 
-**AI ile kod yazarken, aynı zamanda gerçekten bir şeyler öğrenmeni sağlayan, IDE'den bağımsız,
-tek dosyalık evrensel bir kural sistemi.**
+**A universal, single-file rule system, independent of any IDE, that helps you actually learn
+something while an AI writes your code.**
 
 ---
 
-## Sorun
+## The Problem
 
-"Vibe coding" hızlı: prompt yazıyorsun, AI kodu üretiyor, sen çalıştırıp devam ediyorsun. Ama bu
-hız bir bedelle geliyor — **kara kutu sendromu**. Ne yazıldığını, neden o kütüphanenin/deseninin
-seçildiğini, üzerinde çalıştığın alanın (kuantum, blockchain, finans, ne ise) mantığının ne
-olduğunu hiç öğrenmeden onlarca dosya biriktiriyorsun. Öğrenmeye gerek duymadığın için de çaba
-sarf etmiyorsun — ve zamanla refleksler körelmeye başlıyor.
+"Vibe coding" is fast: you write a prompt, the AI generates the code, you run it and move on.
+But that speed comes at a cost — the **black-box syndrome**. You pile up dozens of files without
+ever learning what was written, why that library/pattern was chosen, or what the logic of the
+domain you're working in (quantum, blockchain, finance, whatever it is) actually looks like.
+Because you don't need to learn, you stop putting in the effort — and your instincts start to
+dull over time.
 
-## Çözüm
+## The Solution
 
-`vibecoding.md`, projenin köküne koyduğun ve AI asistanının (Claude Code, Cursor, Windsurf,
-Copilot Chat, hangisi olursa) okuyup uyduğu bir kural dosyası. Bu dosyayı okuyan AI, kod
-yazmaya devam eder ama **her cevabında** seni iki konuda mikro-doz bilgiyle besler:
+`vibecoding.md` is a rules file you place at the root of your project, one that any AI assistant
+(Claude Code, Cursor, Windsurf, Copilot Chat, whichever you use) reads and follows. An AI that
+reads this file keeps writing code, but **feeds you a micro-dose of knowledge on two fronts in
+every response**:
 
-- 🧠 **Domain bilgisi** — üzerinde çalıştığın alanın mantığı (fizik, iş kuralı, protokol, ne ise)
-- 💻 **Yazılım/mimari bilgisi** — neden o dil/kütüphane/pattern seçildi, hangi mühendislik
-  prensibi uygulandı
+- 🧠 **Domain knowledge** — the logic of the field you're working in (physics, business rule,
+  protocol, whatever it is)
+- 💻 **Software/architecture knowledge** — why that language/library/pattern was chosen, which
+  engineering principle was applied
 
-Kurulum dışında hiçbir ekstra adım yok. Terminale komut yazmıyorsun, dosya tekrar yüklemiyorsun.
-Normal sohbetine devam ediyorsun, öğrenme kendiliğinden akıyor.
+There's no extra step beyond setup. You don't type terminal commands, you don't re-upload the
+file. You keep having a normal conversation, and the learning happens on its own.
 
-## Nasıl çalışıyor (özet)
+## How it works (summary)
 
-| Mekanizma | Ne yapar |
+| Mechanism | What it does |
 |---|---|
-| **Çift Şapka** | AI her cevapta hem Alan Uzmanı hem Kıdemli Yazılımcı gibi davranır. |
-| **Faz Algılama** | Proje küçükken büyük resmi, büyüdükçe daha ileri detayları öğretir — seni bilgiyle boğmaz. |
-| **Mikro-Doz Kuralı** | Her cevapta tam olarak 1 domain + 1 yazılım kavramı, maksimum 3 cümle. |
-| **Tech Kavramı Testi** | Yazılım dersi kod özeti değildir — her zaman isimlendirilmiş, transfer edilebilir bir mühendislik prensibidir (örn. *Data Leakage Prevention*, *Idempotency*). |
-| **Analoji / Scaffolding** | Her yeni kavram gerçek dünyadan bir benzetmeyle ya da projede daha önce öğrenilen bir şeyle bağlanır. |
-| **Öğrenme Geçmişi** | AI, `vibecoding-log.md` dosyasına öğrettiklerini kaydeder ve aynı şeyi iki kere anlatmaz. |
-| **Kişisel Odak** | İlk komutta "domain mi, yazılım mı, dengeli mi, yoksa belirli bir konu mu?" diye sorar ve ona göre ağırlıklandırır. |
-| **Sabit Sohbet Formatı** | Her cevap `Durum → Kod → Mikro-Ders → Sıradaki Kanca` bloklarından oluşur — kod içine yorum satırı yazılmaz, her şey sohbette kalır. |
+| **Dual Hat** | The AI acts as both a Domain Expert and a Senior Engineer in every response. |
+| **Phase Detection** | Teaches the big picture while the project is small, deeper detail as it grows — never floods you with information. |
+| **Micro-Dose Rule** | Exactly 1 domain + 1 software concept per response, max 3 sentences each. |
+| **Tech Concept Test** | A tech lesson is never a code summary — it's always a named, transferable engineering principle (e.g. *Data Leakage Prevention*, *Idempotency*). |
+| **Analogy / Scaffolding** | Every new concept is tied to a real-world analogy or something already learned in the project. |
+| **Learning History** | The AI logs what it has taught in `vibecoding-log.md` and never explains the same thing twice. |
+| **Personal Focus** | Asks upfront "domain, software, balanced, or a specific topic?" and weights its teaching accordingly. |
+| **Fixed Chat Format** | Every response follows `Status → Code → Micro-Lesson → Next Hook` — no comment lines in the code, everything stays in the chat. |
 
-Tüm kuralların tam metni ve gerekçeleri için: [`vibecoding.md`](vibecoding.md).
+For the full rules and rationale: [`vibecoding.md`](vibecoding.md).
 
-## Örnek çıktı
+## Example output
 
 ```
-### Durum
-2 qubit'lik bir Bell state devresi eklendi.
+### Status
+Added a 2-qubit Bell state circuit.
 
-### Kod
-<kod bloğu>
+### Code
+<code block>
 
-### Mikro-Ders
-**Domain:** Hadamard kapısı bir qubit'i süperpozisyona sokar — yazı tura havadayken hem yazı
-hem tura olması gibi. CNOT kapısı bu iki qubit'i dolanık hale getirir, biri ölçülünce diğeri
-anında belirlenir.
+### Micro-Lesson
+**Domain:** A Hadamard gate puts a qubit into superposition — like a coin being both heads and
+tails while it's still in the air. A CNOT gate entangles the two qubits, so measuring one
+instantly determines the other.
 
-**Tech — Idempotency:** Bir işlemi birden fazla kez çalıştırmak, bir kez çalıştırmakla aynı
-sonucu vermelidir — tekrar denenen bir ödeme isteğinin iki kez para çekmemesi gibi. Burada
-devre kurulum fonksiyonu her çağrıldığında state'i sıfırdan kurduğu için tekrar çağrılması
-güvenlidir (circuit.py:12).
+**Tech — Idempotency:** Running an operation more than once should produce the same result as
+running it once — like a retried payment request not charging the card twice. Here, the circuit
+setup function rebuilds the state from scratch every time it's called, so calling it again is
+safe (circuit.py:12).
 
-### Sıradaki Kanca
-Bu devreye üçüncü bir qubit eklesek, dolanıklık nasıl değişir?
+### Next Hook
+If we added a third qubit to this circuit, how would the entanglement change?
 ```
 
 ---
 
-## Kurulum
+## Setup
 
-### 1) Dosyayı projenin kök dizinine kopyala
+### 1) Copy the file to your project's root
 
-[`vibecoding.md`](vibecoding.md) dosyasını olduğu isimle projenin kök dizinine koy. **Yeniden
-adlandırmana gerek yok** — hangi AI aracını kullanırsan kullan aşağıdaki yöntem çalışır.
+Place [`vibecoding.md`](vibecoding.md) at your project's root, under its own name. **You don't
+need to rename it** — the method below works no matter which AI tool you use.
 
-### 2) Yeni bir sohbet başlat ve açılış promptunu yapıştır (garantili yöntem)
+### 2) Start a new chat and paste the kickoff prompt (the guaranteed method)
 
-Bazı araçlar (Claude Code → `CLAUDE.md`, Cursor → `.cursorrules` gibi) belirli dosya adlarını
-otomatik okur, ama bu isimlendirme her araçta geçerli değil ve garanti de değil. Hangi AI/araç
-olursa olsun çalışan tek yöntem şu: **her yeni sohbetin ilk mesajı olarak** bu promptu yapıştır.
+Some tools (Claude Code → `CLAUDE.md`, Cursor → `.cursorrules`, etc.) automatically read certain
+file names, but that convention doesn't hold across every tool and isn't guaranteed. The one
+method that works no matter the AI/tool: paste this as **the first message of every new chat**.
 
 ```
-Bu projenin kök dizininde vibecoding.md adlı bir kural dosyası var. Şimdi o dosyayı oku.
-Bundan sonra bu sohbetin tamamında — kaç mesaj sürerse sürsün, ne kadar büyük veya çok adımlı
-bir görev olursa olsun — o dosyadaki tüm kurallara harfiyen uy. Dosyanın Bölüm 0'ındaki
-talimata göre önce bana projenin konusunu ve ne öğrenmek istediğimi doğal bir dille sor,
-alan isimlerini veya dosyanın iç yapısını bana gösterme. Cevabımı aldıktan sonra Bölüm 6'daki
-sohbet çıktı şemasını (Durum / Kod / Mikro-Ders / Sıradaki Kanca) her kod yazdığında kullan.
+There is a rules file named vibecoding.md at the root of this project. Read it now.
+From here on, for the entire conversation — no matter how many messages it takes or how big
+or multi-step the task gets — follow every rule in that file to the letter. Per the
+instructions in its Section 0, first ask me about the project's subject and what I want to
+learn, in natural language, without showing me field names or the file's internal structure.
+Once you have my answer, use the chat output schema from Section 6 (Status / Code /
+Micro-Lesson / Next Hook) every time you write code.
 ```
 
-Bu, dosyayı "okuma+talimat takip etme" AI'ların temel yeteneği olduğu için isim tanımasa bile
-çalışır. Domain sorularını cevapladıktan sonra normal şekilde kod yazdırmaya başlayabilirsin.
+This works even if the tool doesn't recognize the file name, because "read a file + follow its
+instructions" is a baseline capability of every AI. Once you've answered the domain questions,
+start prompting for code as usual.
 
-### (Opsiyonel) Otomatik okuma için dosya adını değiştir
+### (Optional) Rename the file for automatic loading
 
-Aracın kendi kural-dosyası isimlendirmesini kullanmak, açılış promptunu her seferinde
-yapıştırma zahmetinden kurtarır:
+Using the tool's own rules-file naming convention saves you from pasting the kickoff prompt
+every time:
 
-| Araç | Dosya adı |
+| Tool | File name |
 |---|---|
 | Claude Code | `CLAUDE.md` |
-| Cursor | `.cursor/rules` (veya `.cursorrules`) |
+| Cursor | `.cursor/rules` (or `.cursorrules`) |
 | Windsurf | `.windsurfrules` |
 | GitHub Copilot Chat | `.github/copilot-instructions.md` |
 
-Bu isimlerden birini kullanırsan araç dosyayı sohbet başında kendiliğinden okur, açılış
-promptuna gerek kalmaz — ama dosyayı sohbet zaten açıkken eklediysen yine de **yeni bir
-oturum** başlatman gerekir, mevcut oturuma yansımaz.
+If you use one of these names, the tool reads the file on its own at the start of the chat and
+you won't need the kickoff prompt — but if you added the file while a chat was already open, you
+still need to **start a new session**; it won't apply to the existing one.
 
-## Kurulumdan sonra
+## After setup
 
-- AI, öğrettiği kavramları tekrar etmemek için proje kökünde `vibecoding-log.md` adlı bir
-  defter dosyası oluşturup güncelleyecek — bunu silme, sistemin hafızasıdır.
-- İstediğin zaman sohbette **"odağı X yap"** diyerek neyi öğrenmek istediğini değiştirebilirsin
-  (örn. "odağı gas optimizasyonuna çevir").
-- "Öğretmeyi kes" dersen AI bu dosyayı görmezden gelip normal bir asistan gibi davranmaya döner.
+- To avoid teaching the same concept twice, the AI will create and maintain a ledger file named
+  `vibecoding-log.md` at the project root — don't delete it, it's the system's memory.
+- You can change what you want to learn at any time by saying **"switch focus to X"** in chat
+  (e.g. "switch focus to gas optimization").
+- If you say "stop teaching," the AI will ignore this file and go back to behaving like a normal
+  assistant.
 
-## Sınırlamalar
+## Limitations
 
-- Kurallar bir sistem promptu gibi davranır ama garanti değildir — çok büyük/çok adımlı otonom
-  görevlerde (örn. onlarca dosyayı tek seferde değiştirip commit atan bir görev) format zaman
-  zaman zayıflayabilir. Küçük, tek adımlı promptlarda en güvenilir sonucu verir.
+- The rules act like a system prompt, but they're not a guarantee — on very large/multi-step
+  autonomous tasks (e.g. a task that changes dozens of files and commits in one go), the format
+  can occasionally weaken. It's most reliable on small, single-step prompts.
