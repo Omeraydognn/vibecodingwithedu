@@ -82,9 +82,10 @@ olursa olsun çalışan tek yöntem şu: **her yeni sohbetin ilk mesajı olarak*
 ```
 Bu projenin kök dizininde vibecoding.md adlı bir kural dosyası var. Şimdi o dosyayı oku.
 Bundan sonra bu sohbetin tamamında — kaç mesaj sürerse sürsün, ne kadar büyük veya çok adımlı
-bir görev olursa olsun — o dosyadaki tüm kurallara harfiyen uy. Özellikle Bölüm 6'daki sohbet
-çıktı şemasını (Durum / Kod / Mikro-Ders / Sıradaki Kanca) her kod yazdığında kullan. Domain
-alanları (DOMAIN, DOMAIN_UZMANLIK_ROLÜ, ODAK_TERCİHİ) boşsa önce bana sor, doldurunca devam et.
+bir görev olursa olsun — o dosyadaki tüm kurallara harfiyen uy. Dosyanın Bölüm 0'ındaki
+talimata göre önce bana projenin konusunu ve ne öğrenmek istediğimi doğal bir dille sor,
+alan isimlerini veya dosyanın iç yapısını bana gösterme. Cevabımı aldıktan sonra Bölüm 6'daki
+sohbet çıktı şemasını (Durum / Kod / Mikro-Ders / Sıradaki Kanca) her kod yazdığında kullan.
 ```
 
 Bu, dosyayı "okuma+talimat takip etme" AI'ların temel yeteneği olduğu için isim tanımasa bile
