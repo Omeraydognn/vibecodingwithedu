@@ -68,29 +68,43 @@ Bu devreye üçüncü bir qubit eklesek, dolanıklık nasıl değişir?
 
 ## Kurulum
 
-İki durumda da mantık aynı: dosyayı **bir yere kopyala**, sonra **yeni bir sohbet/oturum aç**.
-Fark sadece kopyalanacak yer — IDE'de proje kökü, web uygulamasında platformun kalıcı talimat
-alanı. Kurulum tek seferlik, sonrasında tamamen normal sohbetten devam edersin.
+### 1) Dosyayı projenin kök dizinine kopyala
 
-###  AI sohbeti (Cursor, Windsurf, Copilot Chat, Claude Code)
+[`vibecoding.md`](vibecoding.md) dosyasını olduğu isimle projenin kök dizinine koy. **Yeniden
+adlandırmana gerek yok** — hangi AI aracını kullanırsan kullan aşağıdaki yöntem çalışır.
 
-Bu araçlar proje kökündeki kural dosyasını **sohbet başında** okur.
+### 2) Yeni bir sohbet başlat ve açılış promptunu yapıştır (garantili yöntem)
 
-1. [`vibecoding.md`](vibecoding.md) dosyasını projenin kök dizinine kopyala.
-2. Kullandığın aracın beklediği dosya adına göre yeniden adlandır:
+Bazı araçlar (Claude Code → `CLAUDE.md`, Cursor → `.cursorrules` gibi) belirli dosya adlarını
+otomatik okur, ama bu isimlendirme her araçta geçerli değil ve garanti de değil. Hangi AI/araç
+olursa olsun çalışan tek yöntem şu: **her yeni sohbetin ilk mesajı olarak** bu promptu yapıştır.
 
-   | Araç | Dosya adı |
-   |---|---|
-   | Claude Code | `CLAUDE.md` |
-   | Cursor | `.cursor/rules` (veya `.cursorrules`) |
-   | Windsurf | `.windsurfrules` |
-   | GitHub Copilot Chat | `.github/copilot-instructions.md` |
+```
+Bu projenin kök dizininde vibecoding.md adlı bir kural dosyası var. Şimdi o dosyayı oku.
+Bundan sonra bu sohbetin tamamında — kaç mesaj sürerse sürsün, ne kadar büyük veya çok adımlı
+bir görev olursa olsun — o dosyadaki tüm kurallara harfiyen uy. Özellikle Bölüm 6'daki sohbet
+çıktı şemasını (Durum / Kod / Mikro-Ders / Sıradaki Kanca) her kod yazdığında kullan. Domain
+alanları (DOMAIN, DOMAIN_UZMANLIK_ROLÜ, ODAK_TERCİHİ) boşsa önce bana sor, doldurunca devam et.
+```
 
-3. Dosyanın en üstündeki `DOMAIN`, `DOMAIN_UZMANLIK_ROLÜ`, `GELİŞTİRİCİ_SEVİYESİ` alanlarını
-   doldur (boş bırakırsan AI ilk mesajda sana sorar, sen de sohbetten cevap verirsin).
-4. **Yeni bir oturum/sohbet başlat.** Dosyayı sohbet zaten açıkken eklediysen o oturuma
-   yansımaz — mevcut sohbeti kapatıp yeniden aç, sonra normal şekilde kod yazdırmaya başla.
+Bu, dosyayı "okuma+talimat takip etme" AI'ların temel yeteneği olduğu için isim tanımasa bile
+çalışır. Domain sorularını cevapladıktan sonra normal şekilde kod yazdırmaya başlayabilirsin.
 
+### (Opsiyonel) Otomatik okuma için dosya adını değiştir
+
+Aracın kendi kural-dosyası isimlendirmesini kullanmak, açılış promptunu her seferinde
+yapıştırma zahmetinden kurtarır:
+
+| Araç | Dosya adı |
+|---|---|
+| Claude Code | `CLAUDE.md` |
+| Cursor | `.cursor/rules` (veya `.cursorrules`) |
+| Windsurf | `.windsurfrules` |
+| GitHub Copilot Chat | `.github/copilot-instructions.md` |
+
+Bu isimlerden birini kullanırsan araç dosyayı sohbet başında kendiliğinden okur, açılış
+promptuna gerek kalmaz — ama dosyayı sohbet zaten açıkken eklediysen yine de **yeni bir
+oturum** başlatman gerekir, mevcut oturuma yansımaz.
 
 ## Kurulumdan sonra
 
