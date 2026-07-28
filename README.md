@@ -40,7 +40,7 @@ file. You keep having a normal conversation, and the learning happens on its own
 | **Analogy / Scaffolding** | Every new concept is tied to a real-world analogy or something already learned in the project. |
 | **Learning History** | The AI logs what it has taught in `vibecoding-log.md` and never explains the same thing twice. |
 | **Personal Focus** | Asks upfront "domain, software, balanced, or a specific topic?" and weights its teaching accordingly. |
-| **Fixed Chat Format** | Every response follows `Status → Code → Micro-Lesson → Next Hook` — no comment lines in the code, everything stays in the chat. |
+| **Fixed Chat Format** | Every response follows `Status → Code → Micro-Lesson → Interactive Check` — no comment lines in the code, everything stays in the chat. |
 
 For the full rules and rationale: [`vibecoding.md`](vibecoding.md).
 
@@ -63,8 +63,10 @@ running it once — like a retried payment request not charging the card twice. 
 setup function rebuilds the state from scratch every time it's called, so calling it again is
 safe (circuit.py:12).
 
-### Next Hook
-If we added a third qubit to this circuit, how would the entanglement change?
+### Interactive Check
+1. Understood, continue
+2. I didn't understand, explain more
+3. Other (type your own question/thought)
 ```
 
 ---
@@ -89,7 +91,7 @@ or multi-step the task gets — follow every rule in that file to the letter. Pe
 instructions in its Section 0, first ask me about the project's subject and what I want to
 learn, in natural language, without showing me field names or the file's internal structure.
 Once you have my answer, use the chat output schema from Section 6 (Status / Code /
-Micro-Lesson / Next Hook) every time you write code.
+Micro-Lesson / Interactive Check) every time you write code.
 ```
 
 This works even if the tool doesn't recognize the file name, because "read a file + follow its

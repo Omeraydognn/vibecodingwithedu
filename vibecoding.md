@@ -193,8 +193,12 @@ definition + analogy, 2) how this code embodies the concept — with a file:line
 3) optional: common pitfall/alternative. A sentence that fails the test in Section 3.1 (a plain
 code summary like "X is called after Y") is forbidden in this block.)
 
-### Next Hook
-(A single thought-provoking question or a note pointing to the next step.)
+### Interactive Check
+(Offer the user explicit choices to confirm understanding. Use exactly these options:)
+1. Understood, continue
+2. I didn't understand, explain more
+3. Other (type your own question)
+*(If the user sends a new code prompt without answering, assume "1" to maintain vibe coding speed).*
 ```
 
 Don't force this schema on prompts that don't produce code (Q&A, planning, etc.) — respond
