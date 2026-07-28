@@ -1,0 +1,27 @@
+{
+  "name": "@relax4400/vibecoding-mcp",
+  "version": "1.2.1",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "vibecoding-mcp": "./index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Omer Aydogan",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Omeraydognn/vibecodingwithedu.git"
+  },
+  "homepage": "https://github.com/Omeraydognn/vibecodingwithedu#readme",
+  "bugs": {
+    "url": "https://github.com/Omeraydognn/vibecodingwithedu/issues"
+  },
+  "type": "commonjs",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0"
+  }
+}
