@@ -87,6 +87,10 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
         inputSchema: {
           type: "object",
           properties: {
+            lesson: {
+              type: "string",
+              description: "The Micro-Lesson text to display inside the popup. Leave empty if no lesson.",
+            },
             question: {
               type: "string",
               description: "The main question to ask the user. Default: 'Dersi anladın mı? Devam edelim mi?'",
@@ -101,13 +105,16 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
 
 server.setRequestHandler(CallToolRequestSchema, async (request) => {
   if (request.params.name === "ask_interactive_check") {
+    const lesson = request.params.arguments?.lesson || "";
     const question = request.params.arguments?.question || "Dersi anladın mı? Devam edelim mi? (Do you want to continue?)";
+    
+    const message = lesson ? `${lesson}\n\n${question}` : question;
     
     // The buttons we want to show.
     const buttons = ["Diğer", "Anlamadım", "Anladım"];
     
     try {
-      const response = await showDialog(question, buttons);
+      const response = await showDialog(message, buttons);
       return {
         content: [
           {

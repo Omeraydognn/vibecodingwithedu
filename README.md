@@ -78,7 +78,7 @@ safe (circuit.py:12).
 
 Go to your project's root folder in the terminal and run:
 ```bash
-npx @relax4400/vibecoding-mcp init
+npx @relax4400/vibecoding-mcp@latest init
 ```
 This will automatically generate the `vibecoding.md` rules file in your folder. **You don't
 need to rename it** — the method below works no matter which AI tool you use.
@@ -129,12 +129,12 @@ This works across all MCP-supported environments (Cursor, Windsurf, Claude Code,
 - Click **"+ Add New MCP Server"**
 - **Name:** `VibeCoding`
 - **Type:** `command`
-- **Command:** `npx -y @relax4400/vibecoding-mcp`
+- **Command:** `npx -y @relax4400/vibecoding-mcp@latest`
 
 **For Claude Desktop Users:**
 Just run this one-line command in your terminal and restart Claude:
 ```bash
-npx -y @relax4400/vibecoding-mcp install
+npx -y @relax4400/vibecoding-mcp@latest install
 ```
 *(This automatically finds and updates your `claude_desktop_config.json`!)*
 

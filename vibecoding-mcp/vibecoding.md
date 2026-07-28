@@ -186,23 +186,20 @@ explanation/comment lines inside the code block — everything stays in the chat
 ### Code
 <code block — no comments, clean, ready to run>
 
-### Micro-Lesson
+### Interactive Check & Micro-Lesson (MANDATORY)
+You MUST present the Micro-Lesson and ask the user if they understood, entirely within an interactive tool.
+DO NOT print the Domain and Tech lesson in the chat as regular text.
+
+To do this, use an interactive tool in the following priority:
+1. **Native UI Tool:** If you have a built-in tool for asking the user multiple-choice questions (e.g., `AskUserQuestion` in Claude Code/Desktop), you MUST use it. Pass the ENTIRE Micro-Lesson (the Domain and Tech explanations) combined with your "Anladın mı?" question into the tool's main question/prompt field.
+2. **MCP Tool:** If you don't have a native UI tool, call the `ask_interactive_check` MCP tool. Pass the Micro-Lesson into the `lesson` argument, and your question into the `question` argument.
+3. **Fallback Text:** If no interactive tools are available, print the Micro-Lesson and fallback text manually in the chat:
 **Domain:** (max 3 sentences)
-**Tech — <Concept/Pattern Name>:** (max 3 sentences: 1) the concept's general/project-agnostic
-definition + analogy, 2) how this code embodies the concept — with a file:line reference,
-3) optional: common pitfall/alternative. A sentence that fails the test in Section 3.1 (a plain
-code summary like "X is called after Y") is forbidden in this block.)
-
-### Interactive Check (MANDATORY)
-Instead of typing the learning check choices as text, you MUST call the `ask_interactive_check` MCP tool (if available in your environment). 
-Set the `question` argument to the core question you want to ask about the lesson.
-Once the tool returns the button the user clicked (e.g. "Anladım" or "Anlamadım"), proceed accordingly.
-
-*(Fallback: If the `ask_interactive_check` tool is not available in your current environment, you must output the following text instead:
+**Tech — <Concept/Pattern Name>:** (max 3 sentences)
 1. Anladım, devam et
 2. Anlamadım, daha detaylı anlat
 3. Diğer
-If the user ignores the fallback text and sends a new code prompt, assume they chose "1" to maintain vibe coding speed.)*
+(If the user ignores the fallback text and sends a new code prompt, assume they chose "1".)
 ```
 
 Don't force this schema on prompts that don't produce code (Q&A, planning, etc.) — respond
