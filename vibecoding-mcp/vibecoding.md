@@ -188,18 +188,16 @@ explanation/comment lines inside the code block — everything stays in the chat
 
 ### Interactive Check & Micro-Lesson (MANDATORY)
 You MUST present the Micro-Lesson and ask the user if they understood, entirely within an interactive tool.
-DO NOT print the Domain and Tech lesson in the chat as regular text.
+**CRITICAL: DO NOT print the Domain and Tech lesson in the chat as regular text.**
 
-To do this, use an interactive tool in the following priority:
-1. **Native UI Tool:** If you have a built-in tool for asking the user multiple-choice questions (e.g., `AskUserQuestion` in Claude Code/Desktop), you MUST use it. Pass the ENTIRE Micro-Lesson (the Domain and Tech explanations) combined with your "Anladın mı?" question into the tool's main question/prompt field.
-2. **MCP Tool:** If you don't have a native UI tool, call the `ask_interactive_check` MCP tool. Pass the Micro-Lesson into the `lesson` argument, and your question into the `question` argument.
-3. **Fallback Text:** If no interactive tools are available, print the Micro-Lesson and fallback text manually in the chat:
-**Domain:** (max 3 sentences)
-**Tech — <Concept/Pattern Name>:** (max 3 sentences)
+To do this, you MUST use your native UI tool (e.g., `AskUserQuestion` in Claude Code/Desktop). 
+Pass the ENTIRE Micro-Lesson (the Domain and Tech explanations) combined with your "Anladın mı?" question into the tool's main question/prompt field.
+Set the options to:
 1. Anladım, devam et
 2. Anlamadım, daha detaylı anlat
 3. Diğer
-(If the user ignores the fallback text and sends a new code prompt, assume they chose "1".)
+
+*(Fallback: ONLY if your environment has absolutely no interactive tools, you may print the Micro-Lesson and the fallback text manually in the chat.)*
 ```
 
 Don't force this schema on prompts that don't produce code (Q&A, planning, etc.) — respond
