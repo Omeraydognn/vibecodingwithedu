@@ -7,12 +7,39 @@ if (process.argv[2] === 'init') {
   console.log("VibeCoding kuralları bu klasöre kopyalanıyor...");
   const sourcePath = path.join(__dirname, 'vibecoding.md');
   const destPath = path.join(process.cwd(), 'vibecoding.md');
+  
+  const ruleContent = "Always read and STRICTLY FOLLOW the rules defined in `vibecoding.md` at the root of this project for EVERY response.";
+  
   try {
     fs.copyFileSync(sourcePath, destPath);
     console.log("✅ Başarılı: 'vibecoding.md' dosyası projenizin ana dizinine oluşturuldu!");
-    console.log("Artık AI'a bu dosyayı okumasını söyleyebilirsiniz.");
+    
+    const cursorRulesPath = path.join(process.cwd(), '.cursorrules');
+    if (!fs.existsSync(cursorRulesPath)) {
+        fs.writeFileSync(cursorRulesPath, ruleContent);
+        console.log("✅ .cursorrules oluşturuldu.");
+    }
+    
+    const windsurfRulesPath = path.join(process.cwd(), '.windsurfrules');
+    if (!fs.existsSync(windsurfRulesPath)) {
+        fs.writeFileSync(windsurfRulesPath, ruleContent);
+        console.log("✅ .windsurfrules oluşturuldu.");
+    }
+    
+    const githubDir = path.join(process.cwd(), '.github');
+    if (!fs.existsSync(githubDir)) {
+        fs.mkdirSync(githubDir);
+    }
+    const copilotPath = path.join(githubDir, 'copilot-instructions.md');
+    if (!fs.existsSync(copilotPath)) {
+        fs.writeFileSync(copilotPath, ruleContent);
+        console.log("✅ .github/copilot-instructions.md oluşturuldu.");
+    }
+    
+    console.log("\n🚀 VibeCoding tüm AI editörleri (Cursor, Windsurf, Copilot vb.) için otomatik olarak ayarlandı!");
+    console.log("Artık AI'a sadece ne yapmak istediğini söylemen yeterli. Kurallar otomatik uygulanacak.");
   } catch (err) {
-    console.error("Hata: Dosya kopyalanamadı.", err);
+    console.error("Hata: Kurulum sırasında bir sorun oluştu.", err);
   }
   process.exit(0);
 }
