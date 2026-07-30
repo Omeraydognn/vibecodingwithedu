@@ -1,5 +1,10 @@
 <h1 align="center">VibeCoding + Learn (v2.2+)</h1>
 <p align="center">
+  <a href="https://www.npmjs.com/package/@relax4400/vibecoding-mcp">
+    <img src="https://img.shields.io/npm/v/@relax4400/vibecoding-mcp.svg?logo=npm&logoColor=fff&label=NPM+Package&color=cb3837" alt="NPM Package">
+  </a>
+</p>
+<p align="center">
   <strong align="center">A universal, zero-config rule system that turns your AI Assistant into a contextual teacher while you vibe code.</strong>
 </p>
 
