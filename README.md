@@ -96,6 +96,3 @@ Once installed and activated with the Kickoff Prompt, your AI will structure eve
 > 3. Other
 
 ---
-
-## License
-MIT
