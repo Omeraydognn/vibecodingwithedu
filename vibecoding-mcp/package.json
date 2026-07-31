@@ -1,7 +1,7 @@
 {
   "name": "@relax4400/vibecoding-mcp",
-  "version": "2.4.2",
-  "description": "",
+  "version": "2.4.3",
+  "description": "A universal, zero-config rule system that turns your AI Assistant (Cursor, Windsurf, Claude) into a contextual teacher while you vibe code.",
   "main": "index.js",
   "bin": {
     "vibecoding-mcp": "./index.js"
@@ -9,7 +9,17 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": [
+    "vibecoding",
+    "mcp",
+    "cursor",
+    "windsurf",
+    "claude",
+    "copilot",
+    "ai",
+    "learning",
+    "prompt-engineering"
+  ],
   "author": "Omer Aydogan",
   "license": "MIT",
   "repository": {
