@@ -16,8 +16,7 @@ LEARNING_FOCUS: <empty — to be asked on the first prompt>
 DEVELOPER_LEVEL: <empty — to be asked on the first prompt>
 ```
 
-If these fields are empty, ask the developer **one single, natural-language, jargon-free
-question** on the first prompt. Ask exactly this:
+If these fields are empty, **YOU MUST STOP AND REFUSE TO WRITE ANY CODE.** Even if the user gave you a complex coding task in their first prompt, do not execute it yet. Your ONLY response should be to ask this single, natural-language, jargon-free question:
 
 > "Before we start, I need to know two things: (1) What is the **single main topic, skill, or domain** you want to focus on learning during this project (e.g. 'React Hooks', 'Trading Algorithms', 'Postgres Optimization')? (2) What is your current experience level in software and in that topic?"
 
@@ -96,12 +95,12 @@ You MUST present the Micro-Lesson and ask the user if they understood, entirely 
 **DO NOT print the lesson in the chat as regular text.**
 
 To do this, you MUST use your native UI tool (e.g., `AskUserQuestion` in Claude Code/Desktop). 
-Pass your ENTIRE Micro-Lesson (max 3 sentences, tightly tied to the code you just wrote) combined with your "Anladın mı?" question into the tool's main question/prompt field. Make the text highly readable and clean.
+Pass your ENTIRE Micro-Lesson (max 3 sentences, tightly tied to the code you just wrote) combined with your "Did you understand?" question into the tool's main question/prompt field. Make the text highly readable and clean.
 
 Set the tool's options to:
-1. Anladım, devam et
-2. Anlamadım, daha detaylı anlat
-3. Diğer
+1. Understood
+2. Didn't Understand
+3. Other
 
 *(Fallback: ONLY if your environment has absolutely no interactive tools, you may print the Micro-Lesson and the fallback text manually in the chat.)*
 

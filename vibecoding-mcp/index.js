@@ -4,7 +4,7 @@ const path = require('path');
 const os = require('os');
 
 if (process.argv[2] === 'init') {
-  console.log("VibeCoding kuralları bu klasöre kopyalanıyor...");
+  console.log("Copying VibeCoding rules to this directory...");
   const sourcePath = path.join(__dirname, 'vibecoding.md');
   const destPath = path.join(process.cwd(), 'vibecoding.md');
   
@@ -12,18 +12,18 @@ if (process.argv[2] === 'init') {
   
   try {
     fs.copyFileSync(sourcePath, destPath);
-    console.log("✅ Başarılı: 'vibecoding.md' dosyası projenizin ana dizinine oluşturuldu!");
+    console.log("✅ Success: 'vibecoding.md' has been created at your project root!");
     
     const cursorRulesPath = path.join(process.cwd(), '.cursorrules');
     if (!fs.existsSync(cursorRulesPath)) {
         fs.writeFileSync(cursorRulesPath, ruleContent);
-        console.log("✅ .cursorrules oluşturuldu.");
+        console.log("✅ .cursorrules created.");
     }
     
     const windsurfRulesPath = path.join(process.cwd(), '.windsurfrules');
     if (!fs.existsSync(windsurfRulesPath)) {
         fs.writeFileSync(windsurfRulesPath, ruleContent);
-        console.log("✅ .windsurfrules oluşturuldu.");
+        console.log("✅ .windsurfrules created.");
     }
     
     const githubDir = path.join(process.cwd(), '.github');
@@ -33,26 +33,37 @@ if (process.argv[2] === 'init') {
     const copilotPath = path.join(githubDir, 'copilot-instructions.md');
     if (!fs.existsSync(copilotPath)) {
         fs.writeFileSync(copilotPath, ruleContent);
-        console.log("✅ .github/copilot-instructions.md oluşturuldu.");
+        console.log("✅ .github/copilot-instructions.md created.");
     }
     
-    console.log("\n🚀 VibeCoding tüm AI editörleri (Cursor, Windsurf, Copilot vb.) için otomatik olarak ayarlandı!");
-    console.log("Artık AI'a sadece ne yapmak istediğini söylemen yeterli. Kurallar otomatik uygulanacak.");
+    const claudePath = path.join(process.cwd(), 'CLAUDE.md');
+    if (!fs.existsSync(claudePath)) {
+        fs.writeFileSync(claudePath, ruleContent);
+        console.log("✅ CLAUDE.md created.");
+    }
+    
+    console.log("\n🚀 VibeCoding files successfully added to your project!");
+    console.log("To ensure the system works FLAWLESSLY and the AI doesn't skip the rules, LEAVE NOTHING TO CHANCE!");
+    console.log("\n👇 PLEASE COPY THE TEXT BELOW AND PASTE IT AS YOUR FIRST MESSAGE TO YOUR AI ASSISTANT 👇\n");
+    console.log("------------------------------------------------------------------");
+    console.log("There is a rules file named vibecoding.md at the root of this project. Read it now. From here on, for the entire conversation — no matter how many messages it takes or how big or multi-step the task gets — follow every rule in that file to the letter. Per the instructions in its Section 0, first ask me about the project's subject and what I want to learn, in natural language. Do not execute any coding tasks until I answer. Once you have my answer, use the chat output schema from Section 6 (Status / Code / Interactive Check) every time you take an action.");
+    console.log("------------------------------------------------------------------\n");
+    
   } catch (err) {
-    console.error("Hata: Kurulum sırasında bir sorun oluştu.", err);
+    console.error("Error: A problem occurred during installation.", err);
   }
   process.exit(0);
 }
 
 if (process.argv[2] === 'install') {
-  console.log("VibeCoding MCP Server Kurulumu Başlıyor...");
+  console.log("VibeCoding MCP Server Installation Starting...");
   let configPath = "";
   if (os.platform() === 'darwin') {
     configPath = path.join(os.homedir(), 'Library', 'Application Support', 'Claude', 'claude_desktop_config.json');
   } else if (os.platform() === 'win32') {
     configPath = path.join(process.env.APPDATA || '', 'Claude', 'claude_desktop_config.json');
   } else {
-    console.error("Kurulum sadece Mac ve Windows için otomatiktir.");
+    console.error("Installation is only automatic for Mac and Windows.");
     process.exit(1);
   }
 
@@ -61,7 +72,7 @@ if (process.argv[2] === 'install') {
     try {
       config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
     } catch (e) {
-      console.error("Mevcut config dosyası (JSON) bozuk. Lütfen dosyayı düzeltin:", configPath);
+      console.error("Existing config file (JSON) is corrupted. Please fix the file:", configPath);
       process.exit(1);
     }
   }
@@ -79,9 +90,9 @@ if (process.argv[2] === 'install') {
   }
 
   fs.writeFileSync(configPath, JSON.stringify(config, null, 2), 'utf8');
-  console.log("✅ Kurulum başarıyla tamamlandı!");
-  console.log(`Dosya güncellendi: ${configPath}`);
-  console.log("Lütfen Claude Desktop uygulamasını tamamen kapatıp (Quit) yeniden açın.");
+  console.log("✅ Installation completed successfully!");
+  console.log(`File updated: ${configPath}`);
+  console.log("Please completely close (Quit) and reopen the Claude Desktop application.");
   process.exit(0);
 }
 
@@ -120,7 +131,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
             },
             question: {
               type: "string",
-              description: "The main question to ask the user. Default: 'Dersi anladın mı? Devam edelim mi?'",
+              description: "The main question to ask the user. Default: 'Did you understand the lesson? Should we continue?'",
             },
           },
           required: [],
@@ -133,12 +144,12 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
 server.setRequestHandler(CallToolRequestSchema, async (request) => {
   if (request.params.name === "ask_interactive_check") {
     const lesson = request.params.arguments?.lesson || "";
-    const question = request.params.arguments?.question || "Dersi anladın mı? Devam edelim mi? (Do you want to continue?)";
+    const question = request.params.arguments?.question || "Did you understand the lesson? Should we continue?";
     
     const message = lesson ? `${lesson}\n\n${question}` : question;
     
     // The buttons we want to show.
-    const buttons = ["Diğer", "Anlamadım", "Anladım"];
+    const buttons = ["Other", "Didn't Understand", "Understood"];
     
     try {
       const response = await showDialog(message, buttons);
