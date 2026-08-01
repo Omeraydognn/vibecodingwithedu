@@ -1,4 +1,4 @@
-<h1 align="center">VibeCoding + Learn (v2.4+)</h1>
+<h1 align="center">OpenEdu (v2.4+)</h1>
 <p align="center">
   <a href="https://www.npmjs.com/package/@relax4400/vibecoding-mcp">
     <img src="https://img.shields.io/npm/v/@relax4400/vibecoding-mcp.svg?logo=npm&logoColor=fff&label=NPM+Package&color=cb3837" alt="NPM Package">
@@ -53,12 +53,12 @@ To leave nothing to chance, **start a new chat** and paste the following text as
 
 ## 🧩 Optional: Interactive OS Dialogs (MCP Server)
 
-By default, the AI will print its teaching blocks directly in the chat window. If you want a sleeker experience, you can install the **VibeCoding MCP Server**. This forces the AI to present its questions via a native OS popup dialog instead of plain text.
+By default, the AI will print its teaching blocks directly in the chat window. If you want a sleeker experience, you can install the **OpenEdu MCP Server**. This forces the AI to present its questions via a native OS popup dialog instead of plain text.
 
 ### For Cursor / Windsurf Users:
 1. Go to **Settings -> Features -> MCP**
 2. Click **"+ Add New MCP Server"**
-3. **Name:** `VibeCoding`
+3. **Name:** `OpenEdu`
 4. **Type:** `command`
 5. **Command:** `npx -y @relax4400/vibecoding-mcp`
 
